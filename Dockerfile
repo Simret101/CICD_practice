@@ -1,19 +1,16 @@
-
 FROM python:3.12.9
 
-
+# Set the working directory
 WORKDIR /app
 
-
-COPY requirements.txt .  
-
-
-RUN pip install --no-cache-dir -r requirements.txt  
-
-
+# Copy the application code
 COPY . .
 
+# Install dependencies directly
+RUN pip install --no-cache-dir flask
 
-EXPOSE 8080  
+# Expose the application port
+EXPOSE 8080
 
-
+# Run the application
+CMD ["python", "main.py"]
